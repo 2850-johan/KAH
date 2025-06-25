@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'fonction', // Ajout du champ 'fonction'
     ];
 
     /**
@@ -47,3 +48,6 @@ class User extends Authenticatable
         ];
     }
 }
+
+ 
+

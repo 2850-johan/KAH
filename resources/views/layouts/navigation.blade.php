@@ -10,13 +10,29 @@
                     </a>
                 </div>
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                </div>
-            </div>
+               <!-- Navigation Links -->
+<div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+        {{ __('Dashboard') }}
+    </x-nav-link>
+
+    @role('admin')
+        <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+            {{ __('Dashboard Admin') }}
+        </x-nav-link>
+
+        <x-nav-link :href="route('prestations.index')" :active="request()->routeIs('prestations.*')">
+            {{ __('Prestations') }}
+        </x-nav-link>
+
+         <x-nav-link :href="route('intervenants.index')" :active="request()->routeIs('intervenants.index')">
+        Intervenants
+    </x-nav-link>
+
+        {{-- Tu pourras ajouter ici Intervenants / Factures plus tard --}}
+    @endrole
+</div>
+
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -94,6 +110,13 @@
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
+
+                @role('admin')
+    <x-nav-link :href="route('prestations.index')" :active="request()->routeIs('prestations.*')">
+        {{ __('Prestations') }}
+    </x-nav-link>
+@endrole
+
             </div>
         </div>
     </div>
